@@ -1,7 +1,8 @@
-import { Container, Row, Col, Image } from 'react-bootstrap';
-import { useEffect, useState } from 'react';
-import { getAllData } from '../../utils/getData';
-import Loader from '../UI/Loader/Loader';
+import { Container, Row, Col, Image } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { getAllData } from "../../utils/getData";
+import Loader from "../UI/Loader/Loader";
+import ImageItem from "../ImageItem/ImageItem";
 
 function ImagesList() {
   const [images, setImages] = useState([]);
@@ -23,7 +24,7 @@ function ImagesList() {
             {images.map((item) => {
               return (
                 <Col key={item.id}>
-                  <Image src={item.urls.small} thumbnail />
+                  <ImageItem item={item} />
                 </Col>
               );
             })}

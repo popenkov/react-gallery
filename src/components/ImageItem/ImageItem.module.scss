@@ -1,0 +1,14 @@
+.imgContainer {
+  position: relative;
+}
+
+.hoveredDiv {
+  width: 100%;
+  min-height: 60px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+
+  text-align: center;
+}
