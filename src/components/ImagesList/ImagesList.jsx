@@ -1,8 +1,5 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setImages } from "../../redux/reducers/imageSlice";
-import { getAllData } from "../../utils/getData";
+import { Container, Row, Col } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import Loader from "../UI/Loader/Loader";
 import ImageItem from "../ImageItem/ImageItem";
 

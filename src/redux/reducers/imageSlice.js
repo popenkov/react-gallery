@@ -11,9 +11,12 @@ export const imageSlice = createSlice({
     setImages: (state, action) => {
       state.images = action.payload;
     },
+    setCertainImages: (state, action) => {
+      state.images = action.payload;
+    },
   },
 });
 
-export const { setImages } = imageSlice.actions;
+export const { setImages, setCertainImages } = imageSlice.actions;
 
 export default imageSlice.reducer;

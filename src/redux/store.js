@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import imageReducer from "./reducers/imageSlice";
 import createSagaMiddleware from "redux-saga";
-import saga from "./saga";
+import saga, { fetchImageWatcher } from "./saga";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -13,4 +13,4 @@ export const store = configureStore({
     getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
 });
 
-sagaMiddleware.run(saga);
+sagaMiddleware.run(fetchImageWatcher);

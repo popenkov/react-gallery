@@ -1,9 +1,9 @@
-import { call, takeEvery, put } from "redux-saga/effects";
-import { setImages } from "./reducers/imageSlice";
+import { call, takeEvery, put, all } from "redux-saga/effects";
+import { setImages, setCertainImages } from "./reducers/imageSlice";
 import { sagaActions } from "./sagaActions";
-import { getAllData } from "../utils/getData";
+import { getAllData, getCertainData } from "../utils/getData";
 
-export function* fetchDataSaga() {
+export function* fetchDataSagaWorker() {
   try {
     let result = yield call(() => getAllData());
     yield put(setImages(result.data));
@@ -11,7 +11,60 @@ export function* fetchDataSaga() {
     yield put({ type: "IMAGES_FETCH_FAILED" });
   }
 }
+export function* fetchPortraitsDataSagaWorker() {
+  try {
+    let result = yield call(() => getCertainData("portrait"));
+    yield put(setCertainImages(result.data.results));
+  } catch (e) {
+    console.log(e);
+    yield put({ type: "IMAGES_FETCH_FAILED" });
+  }
+}
+export function* fetchLandscapeDataSagaWorker() {
+  try {
+    let result = yield call(() => getCertainData("landscape"));
+    yield put(setCertainImages(result.data.results));
+  } catch (e) {
+    console.log(e);
+    yield put({ type: "IMAGES_FETCH_FAILED" });
+  }
+}
+export function* fetchSnakesDataSagaWorker() {
+  try {
+    let result = yield call(() => getCertainData("snakes"));
+    yield put(setCertainImages(result.data.results));
+  } catch (e) {
+    console.log(e);
+    yield put({ type: "IMAGES_FETCH_FAILED" });
+  }
+}
+export function* fetchCarsDataSagaWorker() {
+  try {
+    let result = yield call(() => getCertainData("cars"));
+    yield put(setCertainImages(result.data.results));
+  } catch (e) {
+    console.log(e);
+    yield put({ type: "IMAGES_FETCH_FAILED" });
+  }
+}
+
+export function* fetchImageWatcher() {
+  yield takeEvery(sagaActions.FETCH_IMAGES_SAGA, fetchDataSagaWorker);
+  yield takeEvery(
+    sagaActions.FETCH_IMAGES_PORTRAIT_SAGA,
+    fetchPortraitsDataSagaWorker
+  );
+  yield takeEvery(
+    sagaActions.FETCH_IMAGES_LANDSCAPE_SAGA,
+    fetchLandscapeDataSagaWorker
+  );
+  yield takeEvery(
+    sagaActions.FETCH_IMAGES_SNAKES_SAGA,
+    fetchSnakesDataSagaWorker
+  );
+  yield takeEvery(sagaActions.FETCH_IMAGES_CARS_SAGA, fetchCarsDataSagaWorker);
+}
 
 export default function* rootSaga() {
-  yield takeEvery(sagaActions.FETCH_IMAGES_SAGA, fetchDataSaga);
+  yield all([fetchImageWatcher()]);
 }
