@@ -10,6 +10,17 @@ export const getAllData = async () => {
   }
 };
 
+export const getCertainImg = async (query) => {
+  try {
+    const response = await axios.get(
+      `https://api.unsplash.com/photos/${query}?client_id=KKS_XfPpDX5wGKaqdLGAt70M-pqE7i_m7a7Vxk--KrA`
+    );
+    return await response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const getCertainData = async (query) => {
   try {
     const response = await axios.get(

@@ -12,15 +12,25 @@ function ImageItem({ item }) {
         <Image
           src={item.urls.small}
           thumbnail
-          onMouseOver={() => {
+          onMouseEnter={() => {
             setIsHovered(true);
           }}
-          onMouseOut={() => {
+          onMouseLeave={() => {
             setIsHovered(false);
           }}
         />
         {isHovered ? (
-          <div className={styles.hoveredDiv}> {item.id} </div>
+          <div
+            className={styles.hoveredDiv}
+            onMouseEnter={() => {
+              setIsHovered(true);
+            }}
+            onMouseLeave={() => {
+              setIsHovered(false);
+            }}
+          >
+            {item.description ? item.description : "There is no description"}
+          </div>
         ) : null}
       </div>
     </Link>

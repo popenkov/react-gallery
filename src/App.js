@@ -5,11 +5,9 @@ import Main from "./pages/Main/Main";
 
 function App() {
   return (
-    <Provider store={store}>
-      <div className="App">
-        <Main />
-      </div>
-    </Provider>
+    <div className="App">
+      <Main />
+    </div>
   );
 }
 

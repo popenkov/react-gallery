@@ -1,4 +1,3 @@
-import styles from "./Main.module.scss";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { sagaActions } from "../../redux/sagaActions";
