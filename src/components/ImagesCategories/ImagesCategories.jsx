@@ -24,7 +24,10 @@ function ImagesCategories() {
               <Nav.Link
                 onClick={(evt) => {
                   evt.preventDefault();
-                  dispatch({ type: sagaActions.FETCH_IMAGES_LANDSCAPE_SAGA });
+                  dispatch({
+                    type: sagaActions.FETCH_IMAGES_BY_CATEGORY_SAGA,
+                    args: "landscape",
+                  });
                 }}
               >
                 Пейзаж
@@ -34,7 +37,10 @@ function ImagesCategories() {
               <Nav.Link
                 onClick={(evt) => {
                   evt.preventDefault();
-                  dispatch({ type: sagaActions.FETCH_IMAGES_PORTRAIT_SAGA });
+                  dispatch({
+                    type: sagaActions.FETCH_IMAGES_BY_CATEGORY_SAGA,
+                    args: "portrait",
+                  });
                 }}
               >
                 Портрет
@@ -44,7 +50,10 @@ function ImagesCategories() {
               <Nav.Link
                 onClick={(evt) => {
                   evt.preventDefault();
-                  dispatch({ type: sagaActions.FETCH_IMAGES_CARS_SAGA });
+                  dispatch({
+                    type: sagaActions.FETCH_IMAGES_BY_CATEGORY_SAGA,
+                    args: "car",
+                  });
                 }}
               >
                 Автомобили
@@ -54,7 +63,10 @@ function ImagesCategories() {
               <Nav.Link
                 onClick={(evt) => {
                   evt.preventDefault();
-                  dispatch({ type: sagaActions.FETCH_IMAGES_SNAKES_SAGA });
+                  dispatch({
+                    type: sagaActions.FETCH_IMAGES_BY_CATEGORY_SAGA,
+                    args: "snake",
+                  });
                 }}
               >
                 Змеи

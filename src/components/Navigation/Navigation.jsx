@@ -1,17 +1,21 @@
-import { Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+//core
+import { Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
+//users
+import styles from "./Navigation.module.scss";
 function Navigation() {
   return (
     <Nav className="justify-content-end" activeKey="/home">
       <Nav.Item>
-        <Nav.Link>
-          <Link to="/">Gallery</Link>
-        </Nav.Link>
+        <Link to="/" className={styles.link}>
+          Gallery
+        </Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="link-1">
-          <Link to="/about-me">About me</Link>
-        </Nav.Link>
+        <Link to="/about-me" className={styles.link}>
+          About me
+        </Link>
       </Nav.Item>
     </Nav>
   );

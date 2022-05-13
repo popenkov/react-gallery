@@ -31,5 +31,3 @@ export const getCertainData = async (query) => {
     console.error(error);
   }
 };
-
-// getCertainData("snakes").then((data) => console.log(data));

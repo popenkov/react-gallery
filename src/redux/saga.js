@@ -23,36 +23,9 @@ export function* fetchSingleImageSagaWorker(action) {
     yield put({ type: "IMAGES_FETCH_FAILED" });
   }
 }
-export function* fetchPortraitsDataSagaWorker() {
+export function* fetchImagesByCategoryDataSagaWorker(action) {
   try {
-    let result = yield call(() => getCertainData("portrait"));
-    yield put(setCertainImages(result.data.results));
-  } catch (e) {
-    console.log(e);
-    yield put({ type: "IMAGES_FETCH_FAILED" });
-  }
-}
-export function* fetchLandscapeDataSagaWorker() {
-  try {
-    let result = yield call(() => getCertainData("landscape"));
-    yield put(setCertainImages(result.data.results));
-  } catch (e) {
-    console.log(e);
-    yield put({ type: "IMAGES_FETCH_FAILED" });
-  }
-}
-export function* fetchSnakesDataSagaWorker() {
-  try {
-    let result = yield call(() => getCertainData("snakes"));
-    yield put(setCertainImages(result.data.results));
-  } catch (e) {
-    console.log(e);
-    yield put({ type: "IMAGES_FETCH_FAILED" });
-  }
-}
-export function* fetchCarsDataSagaWorker() {
-  try {
-    let result = yield call(() => getCertainData("cars"));
+    let result = yield call(() => getCertainData(action.args));
     yield put(setCertainImages(result.data.results));
   } catch (e) {
     console.log(e);
@@ -64,18 +37,9 @@ export function* fetchImageWatcher() {
   yield takeEvery(sagaActions.FETCH_IMAGES_SAGA, fetchDataSagaWorker);
   yield takeEvery(sagaActions.FETCH_IMAGE_SAGA, fetchSingleImageSagaWorker);
   yield takeEvery(
-    sagaActions.FETCH_IMAGES_PORTRAIT_SAGA,
-    fetchPortraitsDataSagaWorker
+    sagaActions.FETCH_IMAGES_BY_CATEGORY_SAGA,
+    fetchImagesByCategoryDataSagaWorker
   );
-  yield takeEvery(
-    sagaActions.FETCH_IMAGES_LANDSCAPE_SAGA,
-    fetchLandscapeDataSagaWorker
-  );
-  yield takeEvery(
-    sagaActions.FETCH_IMAGES_SNAKES_SAGA,
-    fetchSnakesDataSagaWorker
-  );
-  yield takeEvery(sagaActions.FETCH_IMAGES_CARS_SAGA, fetchCarsDataSagaWorker);
 }
 
 export default function* rootSaga() {
