@@ -6,12 +6,12 @@ import { useParams } from "react-router-dom";
 function ImageInfo() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  React.useEffect(() => {
-    dispatch({
-      type: sagaActions.FETCH_IMAGE_SAGA,
-      args: id,
-    });
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch({
+  //     type: sagaActions.FETCH_IMAGE_SAGA,
+  //     args: id,
+  //   });
+  // }, []);
 
   //{imageId}
   // const image = useSelector((state) => state);
